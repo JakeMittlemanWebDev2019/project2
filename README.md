@@ -11,9 +11,14 @@
 
 ## Install Bootstrap and deps.
 
-$ npm install --save bootstrap jquery popper.js
-$ npm install --save-dev node-sass sass-loader
-$ npm install --save-dev node-gyp
-$ npm install --save-dev fibers
-$ npm install --save-dev webpack@^4.36.0
-$ npm audit fix --force
+npm install --save bootstrap jquery popper.js
+
+npm install --save-dev node-sass sass-loader
+
+npm install --save-dev node-gyp
+
+npm install --save-dev fibers
+
+npm install --save-dev webpack@^4.36.0
+
+npm audit fix --force
