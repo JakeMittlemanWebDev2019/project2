@@ -11,8 +11,8 @@ config :logger, level: :warn
 
 # Configure your database
 config :trans, Trans.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "trans",
+  password: "woh7Yae1IeSo",
   database: "trans_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

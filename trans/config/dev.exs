@@ -68,8 +68,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :trans, Trans.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "trans",
+  password: "woh7Yae1IeSo",
   database: "trans_dev",
   hostname: "localhost",
   pool_size: 10
