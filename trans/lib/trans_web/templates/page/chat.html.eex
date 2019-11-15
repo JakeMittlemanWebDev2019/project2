@@ -1,0 +1,9 @@
+<script>
+ window.chatName = "<%= @name %>";
+</script>
+
+<h1>Welcome to Chatroom</h1>
+
+<div id="root">
+  React component loading...
+</div>

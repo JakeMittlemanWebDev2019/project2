@@ -10,8 +10,15 @@ import css from "../css/app.scss"
 // Import dependencies
 //
 import "phoenix_html"
+import $ from "jquery";
 
-// Import local files
-//
-// Local files can be imported directly using relative paths, for example:
-// import socket from "./socket"
+import socket from "./socket";
+import chat_init from "./trans.jsx";
+
+$(() => {
+    let root = $('#root')[0];
+    if (root) {
+        let channel = socket.channel("chats:" + window.chatName, {});
+        chat_init(root, channel);
+    }
+});
