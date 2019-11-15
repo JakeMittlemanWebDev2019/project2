@@ -1,5 +1,6 @@
-<div class="row">
-  <div class="col-12">
-    <h1>(Trans/Re)late</h1>
-  </div>
-</div>
+<%= form_for @conn, "/chats", fn f -> %>
+    <p>Enter user name: <%= text_input f, :user %></p>
+    <p>Enter chatroom name: <%= text_input f, :name %></p>
+
+    <p><%= submit "Enter chatroom" %></p>
+<% end %>

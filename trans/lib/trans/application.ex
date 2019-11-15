@@ -11,9 +11,11 @@ defmodule Trans.Application do
       # Start the Ecto repository
       Trans.Repo,
       # Start the endpoint when the application starts
-      TransWeb.Endpoint
+      TransWeb.Endpoint,
       # Starts a worker by calling: Trans.Worker.start_link(arg)
       # {Trans.Worker, arg},
+      Trans.BackupAgent,
+      Trans.ChatSup,
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
