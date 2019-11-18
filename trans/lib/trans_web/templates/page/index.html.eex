@@ -1,6 +1,6 @@
 <%= form_for @conn, "/chats", fn f -> %>
-    <p>Enter user name: <%= text_input f, :user %></p>
-    <p>Enter chatroom name: <%= text_input f, :name %></p>
+    <p className="loginText">Enter user name: <%= text_input f, :user %></p>
+    <p className="loginText">Enter chatroom name: <%= text_input f, :name %></p>
 
     <p><%= submit "Enter chatroom" %></p>
 <% end %>
