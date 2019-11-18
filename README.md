@@ -21,6 +21,7 @@
 - If you want someone to look at your code, tag them, otherwise merging is fine
 - delete remote branch
 - delete local branch
+- git pull (from master)
   
 ## Install React??
 
