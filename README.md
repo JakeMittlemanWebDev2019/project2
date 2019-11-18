@@ -21,6 +21,12 @@
 - If you want someone to look at your code, tag them, otherwise merging is fine
 - delete remote branch
 - delete local branch
+  
+## Install React??
+
+- npm install --save-dev @babel/preset-env @babel/preset-react
+- npm install --save react react-dom
+- npm install --save lodash jquery
 
 ## Install Bootstrap and deps.
 
