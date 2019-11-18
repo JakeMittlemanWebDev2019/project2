@@ -9,6 +9,19 @@
 3. Marielle Riveros
 4. Jake Mittleman
 
+## Git Workflow
+
+- git branch <your branch name>
+- git checkout <your branch name>
+- Do some work
+- git add <files>
+- git commit -m <message>
+- git push origin <your branch name>
+- Create a PR (pull request)
+- If you want someone to look at your code, tag them, otherwise merging is fine
+- delete remote branch
+- delete local branch
+
 ## Install Bootstrap and deps.
 
 npm install --save bootstrap jquery popper.js
