@@ -12,9 +12,9 @@ defmodule Trans.Application do
       Trans.Repo,
       # Start the endpoint when the application starts
       TransWeb.Endpoint,
+      Trans.BackupAgent,
       # Starts a worker by calling: Trans.Worker.start_link(arg)
       # {Trans.Worker, arg},
-      Trans.BackupAgent,
       Trans.ChatSup,
     ]
 
