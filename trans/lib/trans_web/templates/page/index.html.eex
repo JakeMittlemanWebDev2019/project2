@@ -4,7 +4,3 @@
 
     <p><%= submit "Enter chatroom" %></p>
 <% end %>
-
-<div>
-  <h1>THIS IS A CHANGE</h1>
-</div>
