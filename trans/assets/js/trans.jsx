@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const chatWindowSize = 25;
+const message_limit = 25;
 
 export default function chat_init(root, channel) {
   ReactDOM.render(<Trans channel={channel} />, root);
@@ -54,7 +54,7 @@ class Trans extends React.Component {
 
   addMessage(message) {
     var new_array = this.state.messages;
-    if (new_array.length < chatWindowSize) {
+    if (new_array.length < message_limit) {
       new_array.push(message);
     }
     else {
@@ -89,18 +89,23 @@ class Trans extends React.Component {
           <Messages root={this} />
         </div>
         <Chat root={this} />
-      </div>
+      </div >
+
     );
 
   }
 }
-
 
 function Messages(props) {
   let { root } = props;
 
   return (
     _.map(root.state.messages, (message, i) => {
+      if (i == 3) {
+        return (<div key={i}>
+          <img className="image" src="/images/disneynature-penguins.jpg"></img>
+        </div>);
+      }
       return (<div key={i} className="message">{message}</div>);
     })
   );
