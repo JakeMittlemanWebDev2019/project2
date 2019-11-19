@@ -6,6 +6,7 @@ $body-bg: rgb(12, 25, 29); // With scss, Bootstrap lets us override colors and s
   background-color: #94ece41c;
   height: 600px;
   width: 100%;
+  overflow: auto;
 }
 
 #chatInput {
@@ -26,4 +27,9 @@ h1 {
 
 p {
   color: rgb(248, 196, 137);
+}
+
+.image {
+  width: 25%;
+  height: 25%;
 }
