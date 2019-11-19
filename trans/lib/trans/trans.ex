@@ -8,7 +8,7 @@ defmodule Trans.Chat do
     }
     end
 
-    def client_view(chat, usser) do
+    def client_view(chat, user) do
     %{
         messages: chat.messages,
         players: chat.players,

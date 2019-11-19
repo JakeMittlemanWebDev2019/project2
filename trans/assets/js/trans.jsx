@@ -76,6 +76,12 @@ class Trans extends React.Component {
   sendChatMessage(event) {
     if (event.key === "Enter") {
       let message = event.target.value;
+      // $.post("/api/v1.5/tr/detect?hint=en,de&key=trnsl.1.1.20191119T004410Z.6b5c7982726f875c.aa7cc791e290a25f4a172ac5928617bd582ca172",
+      //   {
+      //     Host: "translate.yandex.net",
+      //     Accept: "*",
+      //     text={ message },
+      //   }, (resp) => console.log(resp));
       event.target.value = "";
       this.channel.push("chat", { message: message })
       // .receive("ok", this.updateChat.bind(this));

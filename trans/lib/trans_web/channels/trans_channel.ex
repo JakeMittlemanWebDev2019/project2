@@ -50,6 +50,7 @@ defmodule TransWeb.ChatsChannel do
     def handle_in("chat", %{"message" => message}, socket) do
       name = socket.assigns[:name]
       user = socket.assigns[:user]
+      # Auto-detect the language and IO.puts() it
       broadcast!(socket, "new message", %{message: message, user: user})
       {:noreply, socket}
     end
