@@ -1,5 +1,9 @@
 # (Trans/Re)late
 
+## API Key
+trnsl.1.1.20191119T004410Z.6b5c7982726f875c.aa7cc791e290a25f4a172ac5928617bd582ca172
+
+
 ## Description
 (Trans/Re)late is a multi-lingual chatting app that auto-translates messages so it appears as if all participants are speaking the same language.
 
