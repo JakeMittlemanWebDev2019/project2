@@ -20,6 +20,7 @@ defmodule TransWeb.Router do
     get "/", PageController, :index
     get "/chats/:name", PageController, :chat
     post "/chats", PageController, :join
+    resources "/rooms", RoomController
   end
 
   # Other scopes may use custom stacks.
