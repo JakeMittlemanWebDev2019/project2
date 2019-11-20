@@ -3,4 +3,8 @@
     <p className="loginText">Enter chatroom name: <%= text_input f, :name %></p>
 
     <p><%= submit "Enter chatroom" %></p>
+
 <% end %>
+
+<%= link "Create Room", to: Routes.room_path(@conn, :new) %>
+
