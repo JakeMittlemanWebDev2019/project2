@@ -1,7 +1,12 @@
 # (Trans/Re)late
 
-## API Key
-trnsl.1.1.20191119T004410Z.6b5c7982726f875c.aa7cc791e290a25f4a172ac5928617bd582ca172
+## API Instructions
+1. Set Environment Variable each time console opens
+  - Mac: export GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
+  - Windows: $env:GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
+  
+2. Put the Service Account key file in the parent directory of the project.
+  - For example: My file structure is Project2/trans so I put it in Project2
 
 
 ## Description
