@@ -73,3 +73,5 @@ config :trans, Trans.Repo,
   database: "trans_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :goth, json: "../../Trans-Relate-dd5a9c16ffd2.json" |> File.read!
