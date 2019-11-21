@@ -1,7 +1,7 @@
 # (Trans/Re)late
 
 ## API Instructions
-1. Set Environment Variable each time console opens
+1. Set Environment Variable each time console opens. The PATH should be the path to the Service Account key file.
   - Mac: export GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
   - Windows: $env:GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
   
