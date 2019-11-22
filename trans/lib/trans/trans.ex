@@ -5,6 +5,7 @@ defmodule Trans.Chat do
     %{
         messages: [],
         players: [],
+        langs: [],
     }
     end
 
@@ -12,7 +13,13 @@ defmodule Trans.Chat do
     %{
         messages: chat.messages,
         players: chat.players,
+        langs: chat.langs,
     }
+    end
+
+    def translateMessage(message) do
+        
+        
     end
 
 end

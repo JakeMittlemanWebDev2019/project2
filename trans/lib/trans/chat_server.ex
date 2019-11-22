@@ -24,8 +24,8 @@ defmodule Trans.ChatServer do
         GenServer.call(reg(name), {:reset, name})
     end
 
-    def peek(name, user) do
-        GenServer.call(reg(name), {:peek, name, user})
+    def peek(name, user, lang) do
+        GenServer.call(reg(name), {:peek, name, user, lang})
     end
 
   
@@ -47,13 +47,10 @@ defmodule Trans.ChatServer do
       {:reply, chat, chat}
     end
 
-    def handle_call({:peek, name, user}, _from, chat) do
-      if (length(chat.players) <= 2) do
-        chat = Map.merge(chat, %{players: (chat.players ++ [user])})
-        Trans.BackupAgent.put(name, chat)
-        {:reply, chat, chat}
-      else
-        {:reply, chat, chat}
-      end
+    def handle_call({:peek, name, user, lang}, _from, chat) do
+      if (Enum.member?(chat.langs, lang))
+      chat = Map.merge(chat, %{players: (chat.players ++ [user])})
+      Trans.BackupAgent.put(name, chat)
+      {:reply, chat, chat}
     end
   end

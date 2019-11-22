@@ -60,12 +60,19 @@ defmodule TransWeb.ChatsChannel do
       lang = socket.assigns[:lang]
       IO.puts(lang)
       # Auto-detect the language and IO.puts() it
-      broadcast!(socket, "new message", %{message: message, user: user})
+      broadcast!(socket, "update", %{message: message, user: user, lang: lang})
       {:noreply, socket}
     end
   
     def handle_out("update", payload, socket) do
-      push(socket, "update", %{ "chat" => Chat.client_view(payload.chat, socket.assigns[:user]) })
+      # translate the message
+      translationMap = Chat.getTranslationMap(payload.message)
+
+      # put the new message in "chat"
+      chat = Trans.ChatServer.peek(name, socket.assigns[:user])
+
+      # push to the socket
+      push(socket, "update", %{ "chat" => Chat.client_view(chat, socket.assigns[:lang]) })
       {:noreply, socket}
     end
   
