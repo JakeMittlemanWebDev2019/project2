@@ -1,5 +1,6 @@
 <script>
  window.chatName = "<%= @name %>";
+ window.userLang = "<%= @lang %>";
 </script>
 
 <h1 class="display-4">Welcome to Chatroom: <%=@name%></h1>

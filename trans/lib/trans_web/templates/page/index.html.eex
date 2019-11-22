@@ -1,6 +1,8 @@
 <%= form_for @conn, "/chats", fn f -> %>
     <p className="loginText">Enter user name: <%= text_input f, :user %></p>
     <p className="loginText">Enter chatroom name: <%= text_input f, :name %></p>
+    <p className="loginText">Choose a language: <%= select f, :lang,
+      Trans.API.getLanguages() %></p>
 
     <p><%= submit "Enter chatroom" %></p>
 

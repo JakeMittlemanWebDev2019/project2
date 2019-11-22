@@ -17,9 +17,10 @@ class Trans extends React.Component {
     this.state = {
       messages: [],
       players: [],
+      lang: window.userLang,
     };
-
-    this.channel.join()
+    let lang = this.state.lang
+    this.channel.join(lang)
       .receive("ok", this.onJoin.bind(this))
       .receive("error", resp => { console.log(resp); });
 
@@ -83,7 +84,7 @@ class Trans extends React.Component {
       //     text={ message },
       //   }, (resp) => console.log(resp));
       event.target.value = "";
-      this.channel.push("chat", { message: message })
+      this.channel.push("chat", { message: message, lang: this.state.lang })
       // .receive("ok", this.updateChat.bind(this));
     }
   }

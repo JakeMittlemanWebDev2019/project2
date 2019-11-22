@@ -3,22 +3,34 @@ defmodule Trans.API do
   alias GoogleApi.Translate.V2
   alias Goth.Token
   alias GoogleApi.Translate.V2.Api.Translations
+  alias GoogleApi.Translate.V2.Api.Languages
 
-  def translate(language, message) do
+  def getConn() do
     url = "https://www.googleapis.com/auth/cloud-translation"
     {:ok, token} = Token.for_scope(url)
-    conn = V2.Connection.new(token.token)
+    V2.Connection.new(token.token)
+  end
+
+  def translate(language, message) do
+    conn = getConn()
     {:ok, result} = Translations.language_translations_list(conn, message, language)
     resource = hd result.translations
     resource.translatedText
   end
 
   def detectLanguage(message) do
-    url = "https://www.googleapis.com/auth/cloud-translation"
-    {:ok, token} = Token.for_scope(url)
-    conn = V2.Connection.new(token.token)
+    conn = getConn()
     {:ok, result} = Translations.language_translations_list(conn, message, "en")
     resource = hd result.translations
     resource.detectedSourceLanguage  
+  end
+
+  def getLanguages() do
+    conn = getConn()
+    {:ok, result} = Languages.language_languages_list(conn, [target: "en"])
+    langStruct = result.languages
+    Enum.map(langStruct, fn resource -> 
+      resource.name
+    end)
   end
 end

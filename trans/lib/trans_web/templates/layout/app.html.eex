@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script>
      window.userToken = "<%= @user_token %>";
-     console.log(userToken);
     </script>
   </head>
   <body>

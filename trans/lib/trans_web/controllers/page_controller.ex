@@ -5,11 +5,10 @@ defmodule TransWeb.PageController do
     render(conn, "index.html")
   end
 
-  def chat(conn, %{"name" => name}) do
+  def chat(conn, %{"name" => name, "lang" => lang}) do
     user = get_session(conn, :user)
-    IO.puts(user)
     if (user) do
-      render(conn, "chat.html", name: name, user: user)
+      render(conn, "chat.html", name: name, user: user, lang: lang)
     else
       conn
       |> put_flash(:error, "Username cannot be blank")
@@ -17,10 +16,10 @@ defmodule TransWeb.PageController do
     end
   end
 
-  def join(conn, %{"user" => user, "name" => name}) do
+  def join(conn, %{"user" => user, "name" => name, "lang" => lang}) do
     conn
     |> put_session(:user, user)
-    |> redirect(to: Routes.page_path(conn, :chat, name))
+    |> redirect(to: Routes.page_path(conn, :chat, name, lang: lang))
   end
 
 

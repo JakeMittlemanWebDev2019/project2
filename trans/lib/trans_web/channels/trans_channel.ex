@@ -28,19 +28,19 @@ defmodule TransWeb.ChatsChannel do
       end
     end
   
-    def handle_in("click", %{"i" => i, "j" => j}, socket) do
-        name = socket.assigns[:name]
-        user = socket.assigns[:user]
+    # def handle_in("click", %{"i" => i, "j" => j}, socket) do
+    #     name = socket.assigns[:name]
+    #     user = socket.assigns[:user]
   
-        chat = Trans.ChatServer.move_piece(name, user, i, j)
+    #     chat = Trans.ChatServer.move_piece(name, user, i, j)
   
-        # chat = Chat.move_piece(chat, i, j)
+    #     # chat = Chat.move_piece(chat, i, j)
   
-        socket = assign(socket, :chat, chat)
-        BackupAgent.put(name, chat)
-        broadcast!(socket, "update", %{chat: chat})
-        {:reply, {:ok, %{ "chat" => Chat.client_view(chat, user)}}, socket}
-    end
+    #     socket = assign(socket, :chat, chat)
+    #     BackupAgent.put(name, chat)
+    #     broadcast!(socket, "update", %{chat: chat})
+    #     {:reply, {:ok, %{ "chat" => Chat.client_view(chat, user)}}, socket}
+    # end
   
     # def handle_in("reset", _payload, socket) do
     #     name = socket.assigns[:name]
@@ -52,9 +52,13 @@ defmodule TransWeb.ChatsChannel do
     #     {:reply, {:ok, %{ "chat" => Chat.client_view(chat, socket.assigns[:user])}}, socket}
     # end
   
-    def handle_in("chat", %{"message" => message}, socket) do
+    def handle_in("chat", %{"message" => message, "lang" => lang}, socket) do
+      socket = socket
+      |> assign(:lang, lang)
       name = socket.assigns[:name]
       user = socket.assigns[:user]
+      lang = socket.assigns[:lang]
+      IO.puts(lang)
       # Auto-detect the language and IO.puts() it
       broadcast!(socket, "new message", %{message: message, user: user})
       {:noreply, socket}
