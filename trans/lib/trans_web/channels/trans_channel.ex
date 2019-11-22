@@ -5,6 +5,11 @@ defmodule TransWeb.ChatsChannel do
     alias Trans.BackupAgent
   
     intercept ["update"]
+
+    # Send a message and list of languages to channel
+    # send list of languages to server to get map of translations
+    # send map of translations and user language to "client_vew"
+        # in a handle-out call which will work for each user
   
     def join("chats:" <> name, payload, socket) do
       if authorized?(payload) do
@@ -23,19 +28,19 @@ defmodule TransWeb.ChatsChannel do
       end
     end
   
-    # def handle_in("click", %{"i" => i, "j" => j}, socket) do
-    #     name = socket.assigns[:name]
-    #     user = socket.assigns[:user]
+    def handle_in("click", %{"i" => i, "j" => j}, socket) do
+        name = socket.assigns[:name]
+        user = socket.assigns[:user]
   
-    #     chat = Trans.ChatServer.move_piece(name, user, i, j)
+        chat = Trans.ChatServer.move_piece(name, user, i, j)
   
-    #     # chat = Chat.move_piece(chat, i, j)
+        # chat = Chat.move_piece(chat, i, j)
   
-    #     socket = assign(socket, :chat, chat)
-    #     BackupAgent.put(name, chat)
-    #     broadcast!(socket, "update", %{chat: chat})
-    #     {:reply, {:ok, %{ "chat" => Chat.client_view(chat, user)}}, socket}
-    # end
+        socket = assign(socket, :chat, chat)
+        BackupAgent.put(name, chat)
+        broadcast!(socket, "update", %{chat: chat})
+        {:reply, {:ok, %{ "chat" => Chat.client_view(chat, user)}}, socket}
+    end
   
     # def handle_in("reset", _payload, socket) do
     #     name = socket.assigns[:name]
