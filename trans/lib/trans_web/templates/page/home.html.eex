@@ -1,0 +1,1 @@
+<%= link "Create Room", to: Routes.room_path(@conn, :new) %>

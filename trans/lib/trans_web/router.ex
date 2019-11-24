@@ -18,6 +18,7 @@ defmodule TransWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/home", PageController, :home
     get "/chats/:name", PageController, :chat
     post "/chats", PageController, :join
     resources "/rooms", RoomController

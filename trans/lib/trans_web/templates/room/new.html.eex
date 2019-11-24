@@ -1,5 +1,11 @@
 <h1>New Room</h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.room_path(@conn, :create)) %>
+<%= form_for @conn, "/chats", fn f -> %>
+    <p className="loginText">Enter user name: <%= text_input f, :user %></p>
+    <p className="loginText">Enter chatroom name: <%= text_input f, :name %></p>
 
-<span><%= link "Back", to: Routes.room_path(@conn, :index) %></span>
+    <p><%= submit "Enter chatroom" %></p>
+
+<% end %>
+
+<span><%= link "Back", to: Routes.page_path(@conn, :home) %></span>

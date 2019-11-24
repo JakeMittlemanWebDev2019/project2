@@ -5,6 +5,10 @@ defmodule TransWeb.PageController do
     render(conn, "index.html")
   end
 
+  def home(conn, _params) do
+    render(conn, "home.html")
+  end
+
   def chat(conn, %{"name" => name}) do
     user = get_session(conn, :user)
     IO.puts(user)

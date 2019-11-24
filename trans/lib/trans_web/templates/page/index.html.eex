@@ -1,10 +1,2 @@
-<%= form_for @conn, "/chats", fn f -> %>
-    <p className="loginText">Enter user name: <%= text_input f, :user %></p>
-    <p className="loginText">Enter chatroom name: <%= text_input f, :name %></p>
-
-    <p><%= submit "Enter chatroom" %></p>
-
-<% end %>
-
-<%= link "Create Room", to: Routes.room_path(@conn, :new) %>
+<%= link "Login", to: Routes.page_path(@conn, :home) %>
 
