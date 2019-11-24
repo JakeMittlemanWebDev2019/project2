@@ -4,6 +4,7 @@ defmodule TransWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
+    plug TransWeb.Plugs.FetchCurrentUser
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
@@ -21,6 +22,7 @@ defmodule TransWeb.Router do
     get "/chats/:name", PageController, :chat
     post "/chats", PageController, :join
     resources "/rooms", RoomController
+    resources "/sessions", SessionController, only: [:new, :create, :delete], singleton: true
   end
 
   # Other scopes may use custom stacks.
