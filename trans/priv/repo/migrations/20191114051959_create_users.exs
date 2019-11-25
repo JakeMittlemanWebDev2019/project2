@@ -4,7 +4,7 @@ defmodule Trans.Repo.Migrations.CreateUsers do
   def change do
     create table(:users) do
       add :email, :string, null: false
-      add :name, :string, null: false
+      add :person_name, :string, null: false
       add :username, :string, null: false
       add :default_lang, :string, null: false
 

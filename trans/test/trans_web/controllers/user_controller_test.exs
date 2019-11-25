@@ -3,9 +3,9 @@ defmodule TransWeb.UserControllerTest do
 
   alias Trans.Users
 
-  @create_attrs %{email: "some email", name: "some name"}
-  @update_attrs %{email: "some updated email", name: "some updated name"}
-  @invalid_attrs %{email: nil, name: nil}
+  @create_attrs %{email: "some email", username: "some name"}
+  @update_attrs %{email: "some updated email", username: "some updated name"}
+  @invalid_attrs %{email: nil, username: nil}
 
   def fixture(:user) do
     {:ok, user} = Users.create_user(@create_attrs)
@@ -75,6 +75,7 @@ defmodule TransWeb.UserControllerTest do
     test "deletes chosen user", %{conn: conn, user: user} do
       conn = delete(conn, Routes.user_path(conn, :delete, user))
       assert redirected_to(conn) == Routes.user_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.user_path(conn, :show, user))
       end

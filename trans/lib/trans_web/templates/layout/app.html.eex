@@ -1,22 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>(Trans/Re)late</title>
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
-    <script>
-     window.userToken = "<%= @user_token %>";
-     console.log(userToken);
-    </script>
-  </head>
-  <body>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transrelate</title>
+  <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+  <script>
+   window.userToken = "<%= @user_token %>";
+   console.log(userToken);
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <div class="col-4">
+        <a class="navbar-brand">Transrelate</a>
+      </div>
+      <div class="col-8">
+          <ul class="navbar-nav mr-auto">
+            <%= link "Home", to: Routes.page_path(@conn, :index), class: "nav-link" %>
+            <%= if @current_user do %>
+              <%= link "Your Timesheets", to:
+                Routes.timesheet_path(@conn, :index), class: "nav-link" %>
+              <%= link "New Timesheet", to: Routes.timesheet_path(@conn, :new), class: "nav-link "%>
+            <% end %>
+            <%= link "Users", to: Routes.user_path(@conn, :index), class: "nav-link" %>
+          </ul>
+        </div>
+    </nav>
+    <div>
+      <%= if get_flash(@conn, :info) do %>
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <% end %>
+      <%= if get_flash(@conn, :error) do %>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% end %>
       <%= render @view_module, @view_template, assigns %>
-    </main>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
-  </body>
+    </div>
+  </div>
+  <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+</body>
 </html>

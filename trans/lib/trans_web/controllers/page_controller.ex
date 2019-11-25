@@ -5,10 +5,12 @@ defmodule TransWeb.PageController do
     render(conn, "index.html")
   end
 
+  # name = name of room
   def chat(conn, %{"name" => name}) do
     user = get_session(conn, :user)
     IO.puts(user)
-    if (user) do
+
+    if user do
       render(conn, "chat.html", name: name, user: user)
     else
       conn
@@ -22,6 +24,4 @@ defmodule TransWeb.PageController do
     |> put_session(:user, user)
     |> redirect(to: Routes.page_path(conn, :chat, name))
   end
-
-
 end

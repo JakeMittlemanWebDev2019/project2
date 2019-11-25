@@ -19,7 +19,7 @@ defmodule Trans.Users.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :name, :password, :password_confirmation])
+    |> cast(attrs, [:email, :name, :username, :password, :password_confirmation])
     |> validate_confirmation(:password)
     |> validate_length(:password, min: 8)
     |> hash_password()

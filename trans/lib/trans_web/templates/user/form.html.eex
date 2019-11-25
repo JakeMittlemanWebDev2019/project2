@@ -9,13 +9,13 @@
   <%= text_input f, :email %>
   <%= error_tag f, :email %>
 
-  <!-- <%= label f, :username %>
+  <%= label f, :username %>
   <%= text_input f, :username %>
-  <%= error_tag f, :username %> -->
+  <%= error_tag f, :username %>
 
-  <%= label f, :name %>
-  <%= text_input f, :name %>
-  <%= error_tag f, :name %>
+  <!-- <%= label f, :person_name %>
+  <%= text_input f, :person_name %>
+  <%= error_tag f, :person_name %> -->
 
   <div>
     <%= submit "Save" %>
