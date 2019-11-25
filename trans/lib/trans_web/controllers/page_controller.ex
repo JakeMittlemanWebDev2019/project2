@@ -1,16 +1,23 @@
 defmodule TransWeb.PageController do
   use TransWeb, :controller
 
+  alias Trans.Rooms
+  alias Trans.Rooms.Room
+
   def index(conn, _params) do
     render(conn, "index.html")
   end
 
-  # name = name of room
+  def home(conn, _params) do
+    rooms = Rooms.list_rooms()
+    render(conn, "home.html", rooms: rooms)
+  end
+
   def chat(conn, %{"name" => name}) do
     user = get_session(conn, :user)
     IO.puts(user)
-
-    if user do
+    if (user) do
+      Rooms.create_room(%{"name" => name})
       render(conn, "chat.html", name: name, user: user)
     else
       conn

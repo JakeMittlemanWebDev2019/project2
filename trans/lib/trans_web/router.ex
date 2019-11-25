@@ -20,6 +20,7 @@ defmodule TransWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
+    get "/home", PageController, :home
     get "/chats/:name", PageController, :chat
     post "/chats", PageController, :join
     resources "/rooms", RoomController

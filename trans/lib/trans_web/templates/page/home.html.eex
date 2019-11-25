@@ -1,0 +1,14 @@
+<h1>Home</h1>
+<div class="row">
+    <div class="create-chat">
+        <%= link "Create Chat", to: Routes.room_path(@conn, :new), class: "btn btn-outline-success my-2 my-sm-0" %>
+    </div>
+</div>
+<h2>Your Chats</h2>
+
+
+<%= for room <- @rooms do %>
+    <li class="list-group-item">
+      <%= link room.name, to: Routes.room_path(@conn, :show, room.id) %>
+    </li>
+<% end %>
