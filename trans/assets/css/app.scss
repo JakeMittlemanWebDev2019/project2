@@ -1,7 +1,16 @@
-$body-bg: rgb(12, 25, 29); // With scss, Bootstrap lets us override colors and stuff.
+$body-bg: rgb(255, 255, 255); // With scss, Bootstrap lets us override colors and stuff.
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Kulim+Park&display=swap');
 
+.row{
+  padding: 15px;
+}
+.create-chat {
+  padding: 15px;
+  margin-left:auto; 
+  margin-right:0;
+  padding: 10px;
+}
 
 #chat_window {
   background-color: #94ece41c;
@@ -33,4 +42,8 @@ p {
 .image {
   width: 25%;
   height: 25%;
+}
+
+.navbar {
+  background-color: rgb(167, 166, 166);
 }
