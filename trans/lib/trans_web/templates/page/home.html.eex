@@ -1,20 +1,10 @@
 <h1>Home</h1>
-<%= link "Create Room", to: Routes.room_path(@conn, :new) %>
+<%= link "Create Chat", to: Routes.room_path(@conn, :new) %>
 <h1>Listing Rooms</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
 <%= for room <- @rooms do %>
-    <tr>
-      <td><%= room.name %></td>
-    </tr>
+    <li class="list-group-item">
+      <%= link room.name, to: Routes.room_path(@conn, :show, room.id) %>
+    </li>
 <% end %>
-  </tbody>
-</table>
