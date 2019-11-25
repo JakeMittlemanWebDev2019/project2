@@ -8,4 +8,4 @@
 
 <% end %>
 
-<span><%= link "Back", to: Routes.page_path(@conn, :home) %></span>
+<span><%= link "Back", to: Routes.page_path(@conn, :home), class: "btn btn-outline-success my-2 my-sm-0" %></span>

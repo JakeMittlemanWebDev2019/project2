@@ -17,6 +17,7 @@ defmodule TransWeb.PageController do
     user = get_session(conn, :user)
     IO.puts(user)
     if (user) do
+      Rooms.create_room(%{"name" => name})
       render(conn, "chat.html", name: name, user: user)
     else
       conn
