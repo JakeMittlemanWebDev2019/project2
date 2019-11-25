@@ -13,12 +13,29 @@
     </script>
   </head>
   <body>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
-    </main>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>">
-    </script>
+    <div class="container">
+      <nav class="navbar navbar-expand-sm navbar-light bg-blue">
+        <div class="col-4">
+          <a class="navbar-brand">Transrelate</a>
+        </div>
+        <div class="col-8">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home">Home</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div>
+        <%= if get_flash(@conn, :info) do %>
+          <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <% end %>
+        <%= if get_flash(@conn, :error) do %>
+          <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <% end %>
+        <%= render @view_module, @view_template, assigns %>
+      </div>
+    </div>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
