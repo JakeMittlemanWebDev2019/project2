@@ -43,7 +43,7 @@ defmodule Trans.UsersTest do
       user = user_fixture()
       assert {:ok, %User{} = user} = Users.update_user(user, @update_attrs)
       assert user.email == "some updated email"
-      assert user.name == "some updated name"
+      assert user.username == "some updated username"
     end
 
     test "update_user/2 with invalid data returns error changeset" do

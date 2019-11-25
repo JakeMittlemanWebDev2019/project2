@@ -6,8 +6,9 @@ defmodule Trans.Users.User do
 
   schema "users" do
     field :email, :string
-    field :name, :string
+    field :person_name, :string
     field :username, :string
+    field :default_lang, :string
     field :password_hash, :string
 
     field :password, :string, virtual: true
@@ -19,13 +20,18 @@ defmodule Trans.Users.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :name, :username, :password, :password_confirmation])
+    |> cast(attrs, [
+      :email,
+      :person_name,
+      :username,
+      :default_lang,
+      :password,
+      :password_confirmation
+    ])
     |> validate_confirmation(:password)
     |> validate_length(:password, min: 8)
     |> hash_password()
     |> validate_required([:username, :password_hash])
-
-    # |> validate_required([:email, :name])
   end
 
   def hash_password(cset) do

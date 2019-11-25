@@ -22,9 +22,9 @@
           <ul class="navbar-nav mr-auto">
             <%= link "Home", to: Routes.page_path(@conn, :index), class: "nav-link" %>
             <%= if @current_user do %>
-              <%= link "Your Timesheets", to:
+              <%= link "Your Rooms", to:
                 Routes.timesheet_path(@conn, :index), class: "nav-link" %>
-              <%= link "New Timesheet", to: Routes.timesheet_path(@conn, :new), class: "nav-link "%>
+              <%= link "New Room", to: Routes.timesheet_path(@conn, :new), class: "nav-link "%>
             <% end %>
             <%= link "Users", to: Routes.user_path(@conn, :index), class: "nav-link" %>
           </ul>

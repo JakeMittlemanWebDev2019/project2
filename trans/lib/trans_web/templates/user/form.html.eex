@@ -5,19 +5,45 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= text_input f, :email %>
-  <%= error_tag f, :email %>
+  <div class="form-group">
+    <%= label f, "Name" %>
+    <%= text_input f, :person_name, class: "form-control" %>
+    <%= error_tag f, :person_name %>
+  </div>
 
-  <%= label f, :username %>
-  <%= text_input f, :username %>
-  <%= error_tag f, :username %>
+  <div class="form-group">
+    <%= label f, :email %>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
 
-  <!-- <%= label f, :person_name %>
-  <%= text_input f, :person_name %>
-  <%= error_tag f, :person_name %> -->
+  <div class="form-group">
+    <%= label f, "Preferred Language" %>
+    <%= text_input f, :default_lang, class: "form-control" %>
+    <%= error_tag f, :default_lang %>
+  </div>
+
+
+  <div class="form-group">
+    <%= label f, :username %>
+    <%= text_input f, :username, class: "form-control" %>
+    <%= error_tag f, :username %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password %>
+    <%= password_input f, :password, class: "form-control" %>
+    <%= error_tag f, :password %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password_confirmation %>
+    <%= password_input f, :password_confirmation, class: "form-control" %>
+    <%= error_tag f, :password_confirmation %>
+  </div>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Save", class: "btn btn-primary" %>
   </div>
+
 <% end %>
