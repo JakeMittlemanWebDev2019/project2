@@ -9,6 +9,6 @@
 
 <%= for room <- @rooms do %>
     <li class="list-group-item">
-      <%= link room.name, to: Routes.room_path(@conn, :show, room.id) %>
+      <%= link room.name, to: Routes.page_path(@conn, :chat, room.name) %>
     </li>
 <% end %>
