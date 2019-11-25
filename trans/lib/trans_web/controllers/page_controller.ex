@@ -31,6 +31,4 @@ defmodule TransWeb.PageController do
     |> put_session(:user, user)
     |> redirect(to: Routes.page_path(conn, :chat, name))
   end
-
-
 end

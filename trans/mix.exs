@@ -45,7 +45,8 @@ defmodule Trans.MixProject do
       {:httpoison, "~> 0.11"},
       {:jason, "~> 1.1"},
       {:google_api_translate, "~> 0.5.0"},
-      {:goth, "~> 0.6.0"}
+      {:goth, "~> 0.6.0"},
+      {:argon2_elixir, "~> 2.0"}
     ]
   end
 

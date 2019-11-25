@@ -1,0 +1,19 @@
+<!-- Taken from git on Lens app -->
+<h2>Log In</h2>
+<%= form_for @conn, Routes.session_path(@conn, :create), fn f -> %>
+  <div class="form-group">
+    <%= label f, :username %>
+    <%= text_input f, :username, class: "form-control" %>
+    <%= error_tag f, :username %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password %>
+    <%= password_input f, :password, class: "form-control" %>
+    <%= error_tag f, :password%>
+  </div>
+
+  <div>
+    <%= submit "Log In", class: "btn btn-primary" %>
+  </div>
+<% end %>

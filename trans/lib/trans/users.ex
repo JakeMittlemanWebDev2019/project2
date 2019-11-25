@@ -36,6 +36,27 @@ defmodule Trans.Users do
 
   """
   def get_user!(id), do: Repo.get!(User, id)
+  def get_user(id), do: Repo.get(User, id)
+
+  @doc """
+    Helper function
+    Citation: Nat's Notes on the Lens app
+  """
+  def get_user_by_username(username) do
+    Repo.get_by(User, username: username)
+  end
+
+  @doc """
+  Authenticate user with username and password.
+  """
+  def authenticate(username, pass) do
+    user = Repo.get_by(User, username: username)
+
+    case Argon2.check_pass(user, pass) do
+      {:ok, user} -> user
+      _ -> nil
+    end
+  end
 
   @doc """
   Creates a user.

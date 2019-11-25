@@ -6,9 +6,9 @@ defmodule Trans.UsersTest do
   describe "users" do
     alias Trans.Users.User
 
-    @valid_attrs %{email: "some email", name: "some name"}
-    @update_attrs %{email: "some updated email", name: "some updated name"}
-    @invalid_attrs %{email: nil, name: nil}
+    @valid_attrs %{email: "some email", username: "some username"}
+    @update_attrs %{email: "some updated email", username: "some updated username"}
+    @invalid_attrs %{email: nil, username: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -32,7 +32,7 @@ defmodule Trans.UsersTest do
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Users.create_user(@valid_attrs)
       assert user.email == "some email"
-      assert user.name == "some name"
+      assert user.username == "some username"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -43,7 +43,7 @@ defmodule Trans.UsersTest do
       user = user_fixture()
       assert {:ok, %User{} = user} = Users.update_user(user, @update_attrs)
       assert user.email == "some updated email"
-      assert user.name == "some updated name"
+      assert user.username == "some updated username"
     end
 
     test "update_user/2 with invalid data returns error changeset" do
