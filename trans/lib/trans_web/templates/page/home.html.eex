@@ -1,5 +1,5 @@
 <h1>Home</h1>
-<%= link "Create Chat", to: Routes.room_path(@conn, :new) %>
+<%= link "Create Chat", to: Routes.room_path(@conn, :new), class: "btn btn-outline-success my-2 my-sm-0" %>
 <h1>Listing Rooms</h1>
 
 
