@@ -1,2 +1,1 @@
 <%= link "Login", to: Routes.page_path(@conn, :home) %>
-<p>test</p>>
