@@ -7,6 +7,7 @@ defmodule Trans.Users.User do
   schema "users" do
     field :email, :string
     field :name, :string
+    field :username, :string
     field :password_hash, :string
 
     field :password, :string, virtual: true
