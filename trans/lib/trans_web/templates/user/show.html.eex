@@ -2,10 +2,10 @@
 
 <ul>
 
-  <li>
+  <!-- <li>
     <strong>Email:</strong>
     <%= @user.email %>
-  </li>
+  </li> -->
 
   <li>
     <strong>Username:</strong>

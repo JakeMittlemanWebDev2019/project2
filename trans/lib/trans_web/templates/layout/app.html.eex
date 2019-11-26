@@ -23,12 +23,22 @@
             <%= link "Home", to: Routes.page_path(@conn, :index), class: "nav-link" %>
             <%= if @current_user do %>
               <%= link "Your Rooms", to:
-                Routes.timesheet_path(@conn, :index), class: "nav-link" %>
-              <%= link "New Room", to: Routes.timesheet_path(@conn, :new), class: "nav-link "%>
+                Routes.room_path(@conn, :index), class: "nav-link" %>
+              <%= link "New Room", to: Routes.room_path(@conn, :new), class: "nav-link "%>
             <% end %>
             <%= link "Users", to: Routes.user_path(@conn, :index), class: "nav-link" %>
           </ul>
-        </div>
+      </div>
+      <div class="col-4 text-light">
+        <%= if @current_user do %>
+          User: <%= link(@current_user.username,
+            to: Routes.user_path(@conn, :show, @current_user))%>
+          (<%= link("Logout", to: Routes.session_path(@conn, :delete), method: :delete) %>)
+        <% else %>
+          <%= link("Login", to: Routes.session_path(@conn, :new)) %> |
+          <%= link("Register", to: Routes.user_path(@conn, :new))%>
+        <% end %>
+      </div>
     </nav>
     <div>
       <%= if get_flash(@conn, :info) do %>
