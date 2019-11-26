@@ -5,6 +5,7 @@ defmodule Trans.Chat do
     %{
         messages: [],
         players: [],
+        languageMap: makeLanguageMap(),
     }
     end
 
@@ -12,7 +13,15 @@ defmodule Trans.Chat do
     %{
         messages: chat.messages,
         players: chat.players,
+        languageMap: chat.languageMap,
     }
+    end
+
+    def makeLanguageMap() do
+        Enum.map(Trans.API.getLanguageObjects, fn obj ->
+            {obj.name, obj.language}
+        end)
+        |> Enum.into(%{})
     end
 
 end

@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= label f, "Preferred Language" %>
-    <%= text_input f, :default_lang, class: "form-control" %>
+    <%= select f, :default_lang, Trans.API.getLanguages(), class: "form-control" %>
     <%= error_tag f, :default_lang %>
   </div>
 
