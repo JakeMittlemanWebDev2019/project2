@@ -1,0 +1,6 @@
+<!-- Citation: taken largely from NatTuck lens application -->
+<h1>Edit Photo</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.photo_path(@conn, :update, @photo)) %>
+
+<span><%= link "Back", to: Routes.photo_path(@conn, :index) %></span>
