@@ -2,4 +2,6 @@
 
 <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
 
-<span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>
+<div class="back">
+    <span><%= link "Back", to: Routes.page_path(@conn, :index), class: "btn btn-outline-success my-2 my-sm-0" %></span>
+</div>
