@@ -22,10 +22,9 @@
           <ul class="navbar-nav mr-auto">
             <%= link "Home", to: Routes.page_path(@conn, :home), class: "nav-link" %>
             <%= if @current_user do %>
-              <%= link "Your Rooms", to:
-                Routes.room_path(@conn, :index), class: "nav-link" %>
               <%= link "New Room", to: Routes.room_path(@conn, :new), class: "nav-link "%>
             <% end %>
+            <%# TODO: remove this link %>
             <%= link "Users", to: Routes.user_path(@conn, :index), class: "nav-link" %>
             <div class="col-4 text-light">
               <%= if @current_user do %>
