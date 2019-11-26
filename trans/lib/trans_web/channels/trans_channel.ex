@@ -14,7 +14,9 @@ defmodule TransWeb.ChatsChannel do
     def join("chats:" <> name, payload, socket) do
       if authorized?(payload) do
         Trans.ChatServer.start(name)
-        chat = Trans.ChatServer.peek(name, socket.assigns[:user])
+        lang = Trans.Users.get_user_by_username(socket.assigns[:user])
+        lang = lang.default_lang
+        chat = Trans.ChatServer.peek(name, socket.assigns[:user], lang)
   
         # chat = BackupAgent.get(name) || Chat.new()
   
@@ -66,22 +68,34 @@ defmodule TransWeb.ChatsChannel do
       IO.puts(user)
       # Auto-detect the language and IO.puts() it
 
+      user = socket.assigns[:user]
+      userLang = Trans.Users.get_user_by_username(user)
+      userLang = userLang.default_lang
+
+      chat = Trans.ChatServer.peek(socket.assigns[:name], socket.assigns[:user], userLang)
+      IO.inspect(chat.currLangs)
+      translations = Chat.doTranslations(chat, message, chat.currLangs)
+
       # get 
-      broadcast!(socket, "update", %{message: message, user: user, lang: userLang})
+      broadcast!(socket, "update", %{user: user, translations: translations, chat: chat})
       {:noreply, socket}
     end
   
     def handle_out("update", payload, socket) do
-
       # get user language
       user = socket.assigns[:user]
       userLang = Trans.Users.get_user_by_username(user)
       userLang = userLang.default_lang
 
       # get map of languages
+      translations = payload.translations
+
+      message = translations[userLang]
+
+      IO.puts(message)
 
       # get translated message
-      push(socket, "update", %{ "chat" => Chat.client_view(payload.chat, socket.assigns[:user]) })
+      push(socket, "update", %{ "chat" => Chat.add_message(payload.chat, socket.assigns[:user], message) })
       {:noreply, socket}
     end
   

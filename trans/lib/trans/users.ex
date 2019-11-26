@@ -46,6 +46,10 @@ defmodule Trans.Users do
     Repo.get_by(User, username: username)
   end
 
+  def get_user_by_name!(name) do
+    Repo.get_by!(User, person_name: name)
+  end
+
   @doc """
   Authenticate user with username and password.
   """
