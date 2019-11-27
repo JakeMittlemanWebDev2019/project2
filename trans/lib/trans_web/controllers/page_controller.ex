@@ -5,7 +5,14 @@ defmodule TransWeb.PageController do
   alias Trans.Rooms.Room
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    user = get_session(conn, :user)
+    IO.inspect(user)
+    if (user) do
+      conn
+      |> redirect(to: Routes.page_path(conn, :home))
+    else
+      render(conn, "index.html")
+    end
   end
 
   def home(conn, _params) do
