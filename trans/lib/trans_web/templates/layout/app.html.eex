@@ -20,9 +20,13 @@
       </div>
       <div class="col-8">
           <ul class="navbar-nav mr-auto">
-            <%= link "Home", to: Routes.page_path(@conn, :home), class: "nav-link" %>
             <%= if @current_user do %>
+              <%= link "Home", to: Routes.page_path(@conn, :home), class: "nav-link" %>
+              <%= link "Your Rooms", to:
+                Routes.room_path(@conn, :index), class: "nav-link" %>
               <%= link "New Room", to: Routes.room_path(@conn, :new), class: "nav-link "%>
+              <%= link "Users", to: Routes.user_path(@conn, :index), class: "nav-link" %>
+
             <% end %>
             <%# TODO: remove this link %>
             <%= link "Users", to: Routes.user_path(@conn, :index), class: "nav-link" %>
