@@ -15,7 +15,12 @@ defmodule Trans.API do
     conn = getConn()
     {:ok, result} = Translations.language_translations_list(conn, message, language)
     resource = hd result.translations
-    resource.translatedText
+    text = resource.translatedText
+    pattern = ~r/&#\d+;/
+    unicode = hd Regex.run(pattern, text)
+    codepoint = hd Regex.run(~r/\d+/, unicode)
+    {num, _} = Integer.parse(codepoint)
+    String.replace(text, pattern, <<num::utf8>>)
   end
 
   def detectLanguage(message) do
