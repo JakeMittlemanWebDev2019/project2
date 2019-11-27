@@ -24,19 +24,21 @@ class Trans extends React.Component {
       .receive("ok", this.onJoin.bind(this))
       .receive("error", resp => { console.log(resp); });
 
-    this.channel.on("new message", payload => {
-      let message = payload.user + ": " + payload.message;
-      let new_array = this.addMessage(message);
-      let state1 = _.assign({}, this.state, { messages: new_array })
-      this.setState(state1)
-    })
+    // this.channel.on("new message", payload => {
+    //   let message = payload.user + ": " + payload.message;
+    //   let new_array = this.addMessage(message);
+    //   let state1 = _.assign({}, this.state, { messages: new_array })
+    //   this.setState(state1)
+    // })
 
     this.channel.on("update", payload => {
       if (payload.result) {
         alert(payload.result)
       }
-      console.log(payload.chat.currLangs);
-      this.setState(payload.chat)
+      let message = payload.user + ": " + payload.message;
+      let new_array = this.addMessage(message);
+      let state1 = _.assign({}, this.state, { messages: new_array })
+      this.setState(state1)
     })
   }
 
