@@ -95,7 +95,9 @@ defmodule TransWeb.ChatsChannel do
       IO.puts(message)
 
       # get translated message
-      push(socket, "update", %{ "chat" => Chat.add_message(payload.chat, socket.assigns[:user], message) })
+      push(socket, "update", %{ "chat" => Chat.client_view(payload.chat, socket.assigns[:user]),
+                            "user" => payload.user,
+                            "message" => message })
       {:noreply, socket}
     end
   
