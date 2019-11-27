@@ -17,6 +17,7 @@ class Trans extends React.Component {
     this.state = {
       messages: [],
       players: [],
+      currLangs: [],
     };
 
     this.channel.join()
@@ -34,6 +35,7 @@ class Trans extends React.Component {
       if (payload.result) {
         alert(payload.result)
       }
+      console.log(payload.chat.currLangs);
       this.setState(payload.chat)
     })
   }

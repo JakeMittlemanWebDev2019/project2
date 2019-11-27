@@ -36,6 +36,7 @@ defmodule Trans.Rooms do
 
   """
   def get_room!(id), do: Repo.get!(Room, id)
+  def get_room_by_name(name), do: Repo.get_by(Room, name: name)
 
   @doc """
   Creates a room.

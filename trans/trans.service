@@ -1,0 +1,16 @@
+[Unit]
+Description=Lens Photo Sharing
+
+[Service]
+Type=simple
+User=trans
+Group=trans
+Restart=on-failure
+Environment=MIX_ENV=prod "PORT=5001"
+Environment=LANG=en_US.UTF-8
+
+WorkingDirectory=/home/trans/trans
+ExecStart=/bin/bash /home/trans/trans/start.sh
+
+[Install]
+WantedBy=multi-user.target
