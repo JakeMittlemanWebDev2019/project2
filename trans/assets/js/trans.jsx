@@ -92,6 +92,25 @@ class Trans extends React.Component {
     }
   }
 
+  // attribution: https://www.javascripture.com/FileReader
+  uploadPhoto(event, root) {
+    console.log("here")
+    console.log("here2")
+    let input = event.target;
+    console.log(input);
+    let reader = new FileReader();
+    let file = input.files[0];
+    console.log(file);
+    reader.addEventListener("load", function () {
+      let message = reader.result;
+      let messages = root.state.messages;
+      messages.push(message);
+      let state1 = _.assign({}, this.state, { messages: messages });
+      root.setState(state1);
+    }, false);
+    reader.readAsDataURL(file);
+  }
+
   render() {
     return (
       <div>
@@ -99,6 +118,7 @@ class Trans extends React.Component {
           <Messages root={this} />
         </div>
         <Chat root={this} />
+        <Photo root={this} />
       </div >
 
     );
@@ -106,14 +126,25 @@ class Trans extends React.Component {
   }
 }
 
+
+function Photo(props) {
+  let { root } = props;
+  return (
+    <div>
+      <input type="file" accept="image/*"
+        onChange={(event) => root.uploadPhoto(event, root)}></input>
+    </div>
+  );
+}
+
 function Messages(props) {
   let { root } = props;
 
   return (
     _.map(root.state.messages, (message, i) => {
-      if (i == 3) {
+      if (message.substring(0, 10) == "data:image") {
         return (<div key={i}>
-          <img className="image" src="/images/disneynature-penguins.jpg"></img>
+          <img className="image" src={"" + message}></img>
         </div>);
       }
       return (<div key={i} className="message">{message}</div>);
