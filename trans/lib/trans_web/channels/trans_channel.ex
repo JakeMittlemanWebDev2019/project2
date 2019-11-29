@@ -65,19 +65,24 @@ defmodule TransWeb.ChatsChannel do
     def handle_in("chat", %{"message" => message}, socket) do
       name = socket.assigns[:name]
       user = socket.assigns[:user]
-      IO.puts(user)
       # Auto-detect the language and IO.puts() it
 
-      user = socket.assigns[:user]
       userLang = Trans.Users.get_user_by_username(user)
       userLang = userLang.default_lang
 
       chat = Trans.ChatServer.peek(socket.assigns[:name], socket.assigns[:user], userLang)
-      IO.inspect(chat.currLangs)
       translations = Chat.doTranslations(chat, message, chat.currLangs)
 
       # get 
       broadcast!(socket, "update", %{user: user, translations: translations, chat: chat})
+      {:noreply, socket}
+    end
+
+    def handle_in("photo", %{"photo" => photo}, socket) do
+      name = socket.assigns[:name]
+      user = socket.assigns[:user]
+      
+      broadcast!(socket, "new_photo", %{message: photo, user: user})
       {:noreply, socket}
     end
   
@@ -91,8 +96,6 @@ defmodule TransWeb.ChatsChannel do
       translations = payload.translations
 
       message = translations[userLang]
-
-      IO.puts(message)
 
       # get translated message
       push(socket, "update", %{ "chat" => Chat.client_view(payload.chat, socket.assigns[:user]),

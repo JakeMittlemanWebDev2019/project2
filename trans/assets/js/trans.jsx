@@ -31,6 +31,17 @@ class Trans extends React.Component {
     //   this.setState(state1)
     // })
 
+    this.channel.on("new_photo", payload => {
+      let message = null;
+      message = (<div>
+        {payload.user + ": "}
+        <img src={payload.message} className="image"></img>
+      </div>);
+      let new_array = this.addMessage(message);
+      let state1 = _.assign({}, this.state, { messages: new_array })
+      this.setState(state1)
+    })
+
     this.channel.on("update", payload => {
       if (payload.result) {
         alert(payload.result)
@@ -53,6 +64,10 @@ class Trans extends React.Component {
   updateChat({ chat }) {
     // let state1 = _.assign({}, this.state, {messages: message})
     this.setState(chat)
+  }
+
+  updatePhoto({ photo }) {
+
   }
 
 
@@ -80,16 +95,22 @@ class Trans extends React.Component {
   sendChatMessage(event) {
     if (event.key === "Enter") {
       let message = event.target.value;
-      // $.post("/api/v1.5/tr/detect?hint=en,de&key=trnsl.1.1.20191119T004410Z.6b5c7982726f875c.aa7cc791e290a25f4a172ac5928617bd582ca172",
-      //   {
-      //     Host: "translate.yandex.net",
-      //     Accept: "*",
-      //     text={ message },
-      //   }, (resp) => console.log(resp));
       event.target.value = "";
       this.channel.push("chat", { message: message })
       // .receive("ok", this.updateChat.bind(this));
     }
+  }
+
+  // attribution: https://www.javascripture.com/FileReader
+  uploadPhoto(event, root) {
+    let input = event.target;
+    let reader = new FileReader();
+    let file = input.files[0];
+    reader.addEventListener("load", function () {
+      let message = reader.result;
+      root.channel.push("photo", { photo: message })
+    }, false);
+    reader.readAsDataURL(file);
   }
 
   render() {
@@ -99,6 +120,7 @@ class Trans extends React.Component {
           <Messages root={this} />
         </div>
         <Chat root={this} />
+        <Photo root={this} />
       </div >
 
     );
@@ -106,16 +128,27 @@ class Trans extends React.Component {
   }
 }
 
+
+function Photo(props) {
+  let { root } = props;
+  return (
+    <div>
+      <input type="file" accept="image/*"
+        onChange={(event) => root.uploadPhoto(event, root)}></input>
+    </div>
+  );
+}
+
 function Messages(props) {
   let { root } = props;
 
   return (
     _.map(root.state.messages, (message, i) => {
-      if (i == 3) {
-        return (<div key={i}>
-          <img className="image" src="/images/disneynature-penguins.jpg"></img>
-        </div>);
-      }
+      // if (message.substring(0, 10) == "data:image") {
+      //   return (<div key={i}>
+      //     <img className="image" src={"" + message}></img>
+      //   </div>);
+      // }
       return (<div key={i} className="message">{message}</div>);
     })
   );
