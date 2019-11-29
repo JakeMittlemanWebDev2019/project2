@@ -31,6 +31,17 @@ class Trans extends React.Component {
     //   this.setState(state1)
     // })
 
+    this.channel.on("new_photo", payload => {
+      let message = null;
+      message = (<div>
+        {payload.user + ": "}
+        <img src={payload.message} className="image"></img>
+      </div>);
+      let new_array = this.addMessage(message);
+      let state1 = _.assign({}, this.state, { messages: new_array })
+      this.setState(state1)
+    })
+
     this.channel.on("update", payload => {
       if (payload.result) {
         alert(payload.result)
@@ -53,6 +64,10 @@ class Trans extends React.Component {
   updateChat({ chat }) {
     // let state1 = _.assign({}, this.state, {messages: message})
     this.setState(chat)
+  }
+
+  updatePhoto({ photo }) {
+
   }
 
 
@@ -80,12 +95,6 @@ class Trans extends React.Component {
   sendChatMessage(event) {
     if (event.key === "Enter") {
       let message = event.target.value;
-      // $.post("/api/v1.5/tr/detect?hint=en,de&key=trnsl.1.1.20191119T004410Z.6b5c7982726f875c.aa7cc791e290a25f4a172ac5928617bd582ca172",
-      //   {
-      //     Host: "translate.yandex.net",
-      //     Accept: "*",
-      //     text={ message },
-      //   }, (resp) => console.log(resp));
       event.target.value = "";
       this.channel.push("chat", { message: message })
       // .receive("ok", this.updateChat.bind(this));
@@ -94,19 +103,12 @@ class Trans extends React.Component {
 
   // attribution: https://www.javascripture.com/FileReader
   uploadPhoto(event, root) {
-    console.log("here")
-    console.log("here2")
     let input = event.target;
-    console.log(input);
     let reader = new FileReader();
     let file = input.files[0];
-    console.log(file);
     reader.addEventListener("load", function () {
       let message = reader.result;
-      let messages = root.state.messages;
-      messages.push(message);
-      let state1 = _.assign({}, this.state, { messages: messages });
-      root.setState(state1);
+      root.channel.push("photo", { photo: message })
     }, false);
     reader.readAsDataURL(file);
   }
@@ -142,11 +144,11 @@ function Messages(props) {
 
   return (
     _.map(root.state.messages, (message, i) => {
-      if (message.substring(0, 10) == "data:image") {
-        return (<div key={i}>
-          <img className="image" src={"" + message}></img>
-        </div>);
-      }
+      // if (message.substring(0, 10) == "data:image") {
+      //   return (<div key={i}>
+      //     <img className="image" src={"" + message}></img>
+      //   </div>);
+      // }
       return (<div key={i} className="message">{message}</div>);
     })
   );
