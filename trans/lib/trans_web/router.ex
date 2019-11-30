@@ -24,6 +24,8 @@ defmodule TransWeb.Router do
     get "/chats/:name", PageController, :chat
     post "/chats", PageController, :join
     resources "/rooms", RoomController
+    resources "/photos", PhotoController
+    get "/photos/:id/file", PhotoController, :file
     resources "/sessions", SessionController, only: [:new, :create, :delete], singleton: true
   end
 
