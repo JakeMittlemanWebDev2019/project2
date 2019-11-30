@@ -9,13 +9,8 @@
   </li>
 
   <li>
-    <strong>Desc:</strong>
-    <%= @photo.desc %>
-  </li>
-
-  <li>
     <strong>User:</strong>
-    <%= @photo.user.name %>
+    <%= @photo.user.username %>
   </li>
 </ul>
 

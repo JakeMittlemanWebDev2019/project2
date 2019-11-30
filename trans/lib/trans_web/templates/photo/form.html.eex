@@ -8,12 +8,6 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :desc %>
-    <%= textarea f, :desc, class: "form-control" %>
-    <%= error_tag f, :desc %>
-  </div>
-
-  <div class="form-group">
     <%= label f, :photo_upload %>
     <%= file_input f, :photo_upload, class: "form-control btn btn-file" %>
     <%= error_tag f, :photo_upload %>

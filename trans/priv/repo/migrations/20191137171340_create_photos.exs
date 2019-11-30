@@ -6,7 +6,6 @@ defmodule Trans.Repo.Migrations.CreatePhotos do
   def change do
     create table(:photos) do
       add :filename, :string, null: false
-      add :desc, :text, null: false
       add :user_id, references(:users, on_delete: :delete_all), null: false
       add :uuid, :string, null: false
 

@@ -23,14 +23,14 @@ defmodule Trans.Photos do
     Repo.all(Photo)
   end
 
-  def recent_photos(nn) do
-    Repo.all(
-      from pp in Photo,
-        order_by: [desc: pp.inserted_at],
-        preload: [:user, :photo_tags, :tags],
-        limit: ^nn
-    )
-  end
+  # def recent_photos(nn) do
+  #   Repo.all(
+  #     from pp in Photo,
+  #       order_by: [desc: pp.inserted_at],
+  #       preload: [:user, :photo_tags, :tags],
+  #       limit: ^nn
+  #   )
+  # end
 
   @doc """
   Gets a single photo.
@@ -50,7 +50,7 @@ defmodule Trans.Photos do
     Repo.one!(
       from p in Photo,
         where: p.id == ^id,
-        preload: [:user, :photo_tags, :tags]
+        preload: [:user]
     )
   end
 
