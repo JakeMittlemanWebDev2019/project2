@@ -62,6 +62,14 @@ defmodule Trans.Photos do
     )
   end
 
+  def get_user_photo(user_id) do
+    Repo.one(
+      from p in Photo,
+        where: p.user_id == ^user_id
+      # preload: [:user]
+    )
+  end
+
   @doc """
   Creates a photo.
 
@@ -75,7 +83,9 @@ defmodule Trans.Photos do
 
   """
   def create_photo(attrs \\ %{}, user_id) do
-    delete_user_photo(user_id)
+    if get_user_photo(user_id) do
+      delete_user_photo(user_id)
+    end
 
     %Photo{}
     |> Photo.changeset(attrs)

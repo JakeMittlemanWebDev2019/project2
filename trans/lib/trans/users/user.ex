@@ -32,6 +32,7 @@ defmodule Trans.Users.User do
     |> validate_length(:password, min: 8)
     |> hash_password()
     |> validate_required([:username, :password_hash])
+    |> unique_constraint(:username)
   end
 
   def hash_password(cset) do
