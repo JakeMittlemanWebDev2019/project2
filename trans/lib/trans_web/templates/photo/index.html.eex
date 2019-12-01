@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Filename</th>
-      <th>Desc</th>
 
       <th></th>
     </tr>
@@ -15,7 +14,6 @@
 <%= for photo <- @photos do %>
     <tr>
       <td><%= photo.filename %></td>
-      <td><%= photo.desc %></td>
 
       <td>
         <span><%= link "Show", to: Routes.photo_path(@conn, :show, photo) %></span>

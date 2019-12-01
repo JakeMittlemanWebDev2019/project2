@@ -16,6 +16,22 @@ defmodule TransWeb.PhotoController do
     render(conn, "new.html", changeset: changeset)
   end
 
+  # def create(conn, %{"photo" => photo_params}) do
+  #   photo_params = Map.put(photo_params, "user_id", conn.assigns[:current_user].id)
+  #
+  #   IO.inspect(photo_params["photo_upload"])
+  #
+  #   case Photos.create_photo(photo_params) do
+  #     {:ok, photo} ->
+  #       conn
+  #       |> put_flash(:info, "Photo created successfully.")
+  #       |> redirect(to: Routes.photo_path(conn, :show, photo))
+  #
+  #     {:error, %Ecto.Changeset{} = changeset} ->
+  #       render(conn, "new.html", changeset: changeset)
+  #   end
+  # end
+
   def create(conn, %{"photo" => photo_params}) do
     photo_params = Map.put(photo_params, "user_id", conn.assigns[:current_user].id)
 
@@ -26,6 +42,9 @@ defmodule TransWeb.PhotoController do
         conn
         |> put_flash(:info, "Photo created successfully.")
         |> redirect(to: Routes.photo_path(conn, :show, photo))
+
+      # Here, delete photo listed under user's id that is not this one
+      # For this, need to be able to: get photos by user id, delete photo that doesn't have this id?
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
