@@ -51,6 +51,8 @@ defmodule Trans.Photos.Photo do
   def save_photo_upload(cset) do
     up = get_field(cset, :photo_upload)
     uuid = get_field(cset, :uuid)
+    IO.puts("HELLO")
+    IO.inspect(up)
 
     if up do
       dir = photo_upload_dir(uuid)
