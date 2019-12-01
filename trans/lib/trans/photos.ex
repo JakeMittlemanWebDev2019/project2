@@ -54,6 +54,14 @@ defmodule Trans.Photos do
     )
   end
 
+  def get_user_photo!(user_id) do
+    Repo.one!(
+      from p in Photo,
+        where: p.user_id == ^user_id
+      # preload: [:user]
+    )
+  end
+
   @doc """
   Creates a photo.
 
@@ -66,7 +74,9 @@ defmodule Trans.Photos do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_photo(attrs \\ %{}) do
+  def create_photo(attrs \\ %{}, user_id) do
+    delete_user_photo(user_id)
+
     %Photo{}
     |> Photo.changeset(attrs)
     |> Repo.insert()
@@ -104,6 +114,21 @@ defmodule Trans.Photos do
   """
   def delete_photo(%Photo{} = photo) do
     Repo.delete(photo)
+  end
+
+  def test_delete(user_id) do
+    if get_user_photo!(user_id) do
+      get_user_photo!(user_id)
+      |> get_photo!()
+      |> delete_photo()
+    else
+      user_id
+    end
+  end
+
+  def delete_user_photo(user_id) do
+    get_user_photo!(user_id)
+    |> delete_photo()
   end
 
   @doc """

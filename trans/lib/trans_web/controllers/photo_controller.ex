@@ -37,7 +37,7 @@ defmodule TransWeb.PhotoController do
 
     IO.inspect(photo_params["photo_upload"])
 
-    case Photos.create_photo(photo_params) do
+    case Photos.create_photo(photo_params, conn.assigns[:current_user].id()) do
       {:ok, photo} ->
         conn
         |> put_flash(:info, "Photo created successfully.")
