@@ -1,4 +1,4 @@
-<h1>Listing Rooms</h1>
+<h1>Available Rooms</h1>
 
 <table>
   <thead>
@@ -21,4 +21,4 @@
   </tbody>
 </table>
 
-<span><%= link "New Room", to: Routes.room_path(@conn, :new) %></span>
+<span><%= link "New Room", to: Routes.room_path(@conn, :new), class: "btn btn-primary" %></span>
