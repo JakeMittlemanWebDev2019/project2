@@ -27,7 +27,7 @@
    <% end %>
 =======
 <%= if @user.id == @current_user.id do %>
-  <p><%= link("New Photo", to: Routes.photo_path(@conn, :new), class: "btn btn-primary")</p>
+  <p><%= link("New Photo", to: Routes.photo_path(@conn, :new))</p>
 <% end %>
 >>>>>>> 553004dcc39f18e28352c9d374b24275dd127dce
 
