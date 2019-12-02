@@ -1,5 +1,7 @@
 (Trans/Re)late
 
+Project Partners: Jake Mittleman, Kevin Gendron, Marielle Riveros, Jon Anton
+
 URL: transrelate.kevingendron.com
 
 Github:[  
@@ -173,4 +175,9 @@ happens to create a username that already exists in our database, an
 error will be thrown that gently directs the user to enter a
 different username. We have also added a feature that lets users
 select a photo to be associated with their account. This involved
-creating a one-to-one relationship between user and photos.
+creating a one-to-one relationship between user and photos. There 
+is a default photo associated with any account when the account is 
+first created. If the user would like to add their own photo, they 
+can do so under their profile where they have the option to upload 
+an image from their local drive. 
+
