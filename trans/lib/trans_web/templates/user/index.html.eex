@@ -23,7 +23,7 @@
            <%= render TransWeb.PhotoView, "card.html", Map.put(assigns, :photo, Trans.Photos.get_id_photo(user.username)) %>
          <% end %>
          <%= if (Trans.Photos.get_id_photo(user.username) == nil) do %>
-           <%= render TransWeb.PhotoView, "default_card.html", Map.put(assigns, :photo, "~/assets/static/images/parrot.jpg") %>
+           <%= render TransWeb.PhotoView, "card.html", Map.put(assigns, :photo, "~/assets/static/images/parrot.jpg") %>
          <% end %></td>
     </tr>
 <% end %>
