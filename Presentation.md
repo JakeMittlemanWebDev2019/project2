@@ -25,11 +25,11 @@ With sending a photo, when the user uploads a photo, we read the photo data and 
 ## Libraries and Tools
 
 1) Google Cloud API - Translate (Elixir Wrapper)
-1.5) Goth (Google Authentication for the API)
-2) HTML Entities (for decoding HTML Unicode Code Points)
-3) Elixir, Phoenix, and React
-4) Multi-Page Application
-5) Postgresql database (Users, Photos, Rooms)
+2) Goth (Google Authentication for the API)
+3) HTML Entities (for decoding HTML Unicode Code Points)
+4) Elixir, Phoenix, and React
+5) Multi-Page Application
+6) Postgresql database (Users, Photos, Rooms)
 
 ## Major Challenges
 
