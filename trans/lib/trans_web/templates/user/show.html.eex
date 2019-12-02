@@ -15,7 +15,7 @@
 </ul>
 
 <%= if @user.id == @current_user.id do %>
-  <p><%= link("New Photo", to: Routes.photo_path(@conn, :new), class: "btn btn-primary")</p>
+  <p><%= link("New Photo", to: Routes.photo_path(@conn, :new))</p>
 <% end %>
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span>
