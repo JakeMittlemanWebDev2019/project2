@@ -51,3 +51,33 @@ npm install --save-dev fibers
 npm install --save-dev webpack@^4.36.0
 
 npm audit fix --force
+
+## Prep for deployment
+
+Impacted Files:
+
+- [ ] -prod.exs /config
+- [ ] -prod.secret.exs /config
+- [ ] -deploy.sh /
+- [ ] -trans.nginx /
+- [ ] -trans.service /
+- [ ] -start.sh /
+- [ ] -prod-env.sh /
+
+Commands:
+
+$ mix release.init
+$ mix deps.get
+$ (cd assets && npm install)
+$ mix phx.gen.secret (add to prod-env.sh)
+$ . prod-env.sh
+$ mix ecto.create
+# cd /etc/nginx/sites-enabled
+# ln -s /etc/nginx/sites-available/lens.ironbeard.com .
+# service nginx restart
+# cp lens.service /etc/systemd/system
+# systemctl enable lens.service
+# service lens start
+# service lens status
+
+

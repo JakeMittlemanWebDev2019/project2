@@ -5,7 +5,14 @@ defmodule TransWeb.PageController do
   alias Trans.Rooms.Room
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    user = get_session(conn, :user)
+    IO.inspect(user)
+    if (user) do
+      conn
+      |> redirect(to: Routes.page_path(conn, :home))
+    else
+      render(conn, "index.html")
+    end
   end
 
   def home(conn, _params) do
@@ -17,7 +24,9 @@ defmodule TransWeb.PageController do
     user = get_session(conn, :user)
     IO.puts(user)
     if (user) do
-      Rooms.create_room(%{"name" => name})
+      if (!Rooms.get_room_by_name(name)) do
+        Rooms.create_room(%{"name" => name})
+      end
       render(conn, "chat.html", name: name, user: user)
     else
       conn

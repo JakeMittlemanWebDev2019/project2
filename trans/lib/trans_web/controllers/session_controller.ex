@@ -17,6 +17,7 @@ defmodule TransWeb.SessionController do
     if user do
       conn
       |> put_session(:user_id, user.id)
+      |> put_session(:user, username)
       |> put_flash(:info, "Welcome back #{user.username}")
       |> redirect(to: Routes.page_path(conn, :home))
     else
@@ -30,6 +31,7 @@ defmodule TransWeb.SessionController do
   def delete(conn, _params) do
     conn
     |> delete_session(:user_id)
+    |> delete_session(:user)
     |> put_flash(:info, "Logged out.")
     |> redirect(to: Routes.page_path(conn, :index))
   end

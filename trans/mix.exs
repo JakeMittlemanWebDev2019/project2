@@ -46,7 +46,8 @@ defmodule Trans.MixProject do
       {:jason, "~> 1.1"},
       {:google_api_translate, "~> 0.5.0"},
       {:goth, "~> 0.6.0"},
-      {:argon2_elixir, "~> 2.0"}
+      {:argon2_elixir, "~> 2.0"},
+      {:html_entities, "~> 0.4"},
     ]
   end
 
