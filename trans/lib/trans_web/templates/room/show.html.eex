@@ -10,4 +10,5 @@
 </ul>
 
 <span><%= link "Edit", to: Routes.room_path(@conn, :edit, @room) %></span>
+<span><%= link "Delete", to: Routes.room_path(@conn, :delete, @room), method: :delete, data: [confirm: "Are you sure?"] %></span>
 <span><%= link "Back", to: Routes.room_path(@conn, :index) %></span>

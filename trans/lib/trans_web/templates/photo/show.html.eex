@@ -4,11 +4,6 @@
 
 <ul>
   <li>
-    <strong>Filename:</strong>
-    <%= @photo.filename %>
-  </li>
-
-  <li>
     <strong>User:</strong>
     <%= @photo.user.username %>
   </li>
