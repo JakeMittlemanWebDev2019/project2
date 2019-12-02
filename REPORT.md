@@ -4,9 +4,7 @@ Project Partners: Jake Mittleman, Kevin Gendron, Marielle Riveros, Jon Anton
 
 URL: transrelate.kevingendron.com
 
-Github:[  
-https://github.com/JakeMittlemanWebDev2019/project2.git](https://githu
-b.com/JakeMittlemanWebDev2019/project2.git)
+Github:[https://github.com/JakeMittlemanWebDev2019/project2.git](https://github.com/JakeMittlemanWebDev2019/project2.git)
 
 Is your app deployed and working?
 
