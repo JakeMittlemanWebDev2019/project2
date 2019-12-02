@@ -1,11 +1,3 @@
-<!-- Citation: taken largely from NatTuck lens application -->
 <div class="card col-4">
-  <%= link(img_tag(Routes.photo_path(@conn, :file, @photo), class: "card-img-top"),
-    to: Routes.photo_path(@conn, :show, @photo)) %>
-  <div class="card-body">
-    <p>User: <%= link(@photo.user.name,
-             to: Routes.user_path(@conn, :show, @photo.user)) %></p>
-    <p><%= @photo.desc %></p>
-
-  </div>
+  <%= img_tag(Routes.photo_path(@conn, :file, @photo), class: "card-img-top") %>
 </div>

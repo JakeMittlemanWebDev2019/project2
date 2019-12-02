@@ -56,8 +56,30 @@ defmodule TransWeb.PhotoController do
     render(conn, "show.html", photo: photo)
   end
 
+  def file_original(conn, %{"id" => id}) do
+    photo = Photos.get_photo(id)
+    dir = Photo.photo_upload_dir(photo.uuid)
+    data = File.read!(Path.join(dir, photo.filename))
+
+    conn
+    |> put_resp_header("content-type", "image/jpeg")
+    |> put_resp_header("content-disposition", "inline")
+    |> send_resp(200, data)
+  end
+
   def file(conn, %{"id" => id}) do
-    photo = Photos.get_photo!(id)
+    photo = Photos.get_photo(id)
+    dir = Photo.photo_upload_dir(photo.uuid)
+    data = File.read!(Path.join(dir, photo.filename))
+
+    conn
+    |> put_resp_header("content-type", "image/jpeg")
+    |> put_resp_header("content-disposition", "inline")
+    |> send_resp(200, data)
+  end
+
+  def file_new(conn, %{"user_id" => user_id}) do
+    photo = Photos.get_user_photo!(user_id)
     dir = Photo.photo_upload_dir(photo.uuid)
     data = File.read!(Path.join(dir, photo.filename))
 

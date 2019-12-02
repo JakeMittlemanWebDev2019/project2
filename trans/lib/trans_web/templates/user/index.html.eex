@@ -4,8 +4,9 @@
   <thead>
     <tr>
       <th>Username</th>
+      <th></th>
+      <th></th>
       <th>Photo</th>
-
       <th></th>
     </tr>
   </thead>
@@ -13,7 +14,8 @@
 <%= for user <- @users do %>
     <tr>
       <td><%= user.username %></td>
-
+      <td></td>
+      <td colspan=3><%= render TransWeb.PhotoView, "card.html", Map.put(assigns, :photo, Trans.Photos.get_id_photo(user.username)) %></td>
     </tr>
 <% end %>
   </tbody>

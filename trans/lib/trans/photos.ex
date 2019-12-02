@@ -54,6 +54,14 @@ defmodule Trans.Photos do
     )
   end
 
+  def get_photo(id) do
+    Repo.one(
+      from p in Photo,
+        where: p.id == ^id,
+        preload: [:user]
+    )
+  end
+
   def get_user_photo!(user_id) do
     Repo.one!(
       from p in Photo,
@@ -66,7 +74,15 @@ defmodule Trans.Photos do
     Repo.one(
       from p in Photo,
         where: p.user_id == ^user_id
-      # preload: [:user]
+    )
+  end
+
+  def get_id_photo(username) do
+    user_id = Trans.Users.get_id_by_username(username)
+
+    Repo.one(
+      from p in Photo,
+        where: p.user_id == ^user_id
     )
   end
 
@@ -124,16 +140,6 @@ defmodule Trans.Photos do
   """
   def delete_photo(%Photo{} = photo) do
     Repo.delete(photo)
-  end
-
-  def test_delete(user_id) do
-    if get_user_photo!(user_id) do
-      get_user_photo!(user_id)
-      |> get_photo!()
-      |> delete_photo()
-    else
-      user_id
-    end
   end
 
   def delete_user_photo(user_id) do
