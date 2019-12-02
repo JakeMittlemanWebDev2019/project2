@@ -4,7 +4,7 @@
     <p className="loginText">Enter user name: <%= text_input f, :user %></p>
     <p className="loginText">Enter chatroom name: <%= text_input f, :name %></p>
 
-    <p><%= submit "Enter chatroom" %></p>
+    <p><%= submit "Enter chatroom", class: "btn btn-primary" %></p>
 
 <% end %>
 
