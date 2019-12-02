@@ -1,0 +1,19 @@
+<!-- Citation: taken largely from NatTuck lens application -->
+
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :photo_upload %>
+    <%= file_input f, :photo_upload, class: "form-control btn btn-file" %>
+    <%= error_tag f, :photo_upload %>
+  </div>
+
+  <div>
+    <%= submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>

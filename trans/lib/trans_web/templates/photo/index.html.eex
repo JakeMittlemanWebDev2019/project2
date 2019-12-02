@@ -1,0 +1,28 @@
+<!-- Citation: taken largely from NatTuck lens application -->
+
+<h1>Listing Photos</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Filename</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for photo <- @photos do %>
+    <tr>
+      <td><%= photo.filename %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.photo_path(@conn, :show, photo) %></span>
+        <span><%= link "Edit", to: Routes.photo_path(@conn, :edit, photo) %></span>
+        <span><%= link "Delete", to: Routes.photo_path(@conn, :delete, photo), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Photo", to: Routes.photo_path(@conn, :new) %></span>

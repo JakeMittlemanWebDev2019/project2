@@ -1,0 +1,6 @@
+beluga.jpg -- Photo by insung yoon on Unsplash
+penguin.jpg -- Photo by Cassidy Mills on Unsplash
+tiger.jpg -- Photo by Mike Marrah on Unsplash
+parrot.jpg -- Photo by Zdeněk Macháček on Unsplash
+pig.jpg -- Photo by Christopher Carson on Unsplash
+dachsund.jpg -- Photo by Marcus Woodbridge on Unsplash

@@ -46,6 +46,12 @@ defmodule Trans.Users do
     Repo.get_by(User, username: username)
   end
 
+
+  def get_id_by_username(username) do
+    user = Repo.get_by(User, username: username)
+    user.id
+  end
+  
   def get_user_by_name!(name) do
     Repo.get_by!(User, person_name: name)
   end

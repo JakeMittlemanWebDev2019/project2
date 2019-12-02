@@ -1,0 +1,22 @@
+<!-- Citation: taken largely from NatTuck lens application -->
+
+<h1>Show Photo</h1>
+
+<ul>
+  <li>
+    <strong>Filename:</strong>
+    <%= @photo.filename %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @photo.user.username %>
+  </li>
+</ul>
+
+<div>
+  <%= img_tag(Routes.photo_path(@conn, :file, @photo)) %>
+</div>
+
+<span><%= link "Edit", to: Routes.photo_path(@conn, :edit, @photo) %></span>
+<span><%= link "Back", to: Routes.photo_path(@conn, :index) %></span>

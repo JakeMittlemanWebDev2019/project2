@@ -20,10 +20,13 @@ defmodule TransWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
+    # resources "/users", PhotoController, :file
     get "/home", PageController, :home
     get "/chats/:name", PageController, :chat
     post "/chats", PageController, :join
     resources "/rooms", RoomController
+    resources "/photos", PhotoController
+    get "/photos/:id/file", PhotoController, :file
     resources "/sessions", SessionController, only: [:new, :create, :delete], singleton: true
   end
 
