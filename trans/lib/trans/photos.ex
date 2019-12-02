@@ -108,6 +108,12 @@ defmodule Trans.Photos do
     |> Repo.insert()
   end
 
+  def create_default(_params, user_id) do
+    %Photo{}
+    |> Photo.changeset("assets/static/images/dachshund.jpg", [user_id, true])
+    |> Repo.insert()
+  end
+
   @doc """
   Updates a photo.
 

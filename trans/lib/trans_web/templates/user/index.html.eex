@@ -16,10 +16,17 @@
 <%= for user <- @users do %>
     <tr>
       <td><%= user.username %></td>
+      <td><img src="assets/static/images/beluga.jpg"></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td colspan=3><%= render TransWeb.PhotoView, "card.html", Map.put(assigns, :photo, Trans.Photos.get_id_photo(user.username)) %></td>
+      <td colspan=3>
+         <%= if (Trans.Photos.get_id_photo(user.username) != nil) do %>
+           <%= render TransWeb.PhotoView, "card.html", Map.put(assigns, :photo, Trans.Photos.get_id_photo(user.username)) %>
+         <% end %>
+         <%= if (Trans.Photos.get_id_photo(user.username) == nil) do %>
+           <%= render TransWeb.PhotoView, "default_card.html", Map.put(assigns, :photo, "~/assets/static/images/parrot.jpg") %>
+         <% end %>
+      </td>
     </tr>
 <% end %>
   </tbody>
