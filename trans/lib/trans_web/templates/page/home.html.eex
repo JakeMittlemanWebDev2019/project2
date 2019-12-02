@@ -4,7 +4,7 @@
         <%= link "Create Chat", to: Routes.room_path(@conn, :new), class: "btn btn-outline-success my-2 my-sm-0" %>
     </div>
 </div>
-<h2>Your Chats</h2>
+<h2>Chat Rooms</h2>
 
 
 <%= for room <- @rooms do %>
